@@ -1,22 +1,17 @@
 {
     "version": 2,
-    "builds": [
-        {
-            "src": "api/index.php",
-            "use": "vercel-php@0.7.5"
-        },
-        {
-            "src": "/public/**",
-            "use": "@vercel/static"
+    "functions": {
+        "api/*.php": {
+            "runtime": "vercel-php@0.7.1"
         }
-    ],
+    },
     "routes": [
         {
             "src": "/build/(.*)",
             "dest": "/public/build/$1"
         },
         {
-            "src": "/(css|js|images|assets)/(.*)",
+            "src": "/(css|js|images|assets|favicon.ico)/(.*)",
             "dest": "/public/$1/$2"
         },
         {
@@ -26,9 +21,6 @@
     ],
     "env": {
         "APP_ENV": "production",
-        "APP_DEBUG": "false",
-        "APP_URL": "https://ecomerceproject.vercel.app",
-        "ASSET_URL": "https://ecomerceproject.vercel.app",
-        "DB_CONNECTION": "mysql"
+        "APP_DEBUG": "false"
     }
 }
